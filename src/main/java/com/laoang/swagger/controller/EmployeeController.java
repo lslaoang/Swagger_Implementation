@@ -4,7 +4,6 @@ import com.laoang.swagger.model.Employee;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
@@ -12,7 +11,7 @@ import java.util.concurrent.ConcurrentMap;
 @RestController
 public class EmployeeController {
 
-    ConcurrentMap<Long,Employee> empDirectory = new ConcurrentHashMap<>();
+    ConcurrentMap<String,Employee> empDirectory = new ConcurrentHashMap<>();
 
     @GetMapping("/")
     public List<Employee> getAllEmployee(){
