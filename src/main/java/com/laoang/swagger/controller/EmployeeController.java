@@ -8,8 +8,9 @@ import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
+
 @RestController
-@RequestMapping("/api")
+//@RequestMapping("/api")
 public class EmployeeController {
 
     ConcurrentMap<String,Employee> empDirectory = new ConcurrentHashMap<>();
@@ -20,7 +21,7 @@ public class EmployeeController {
     }
 
     @GetMapping("/{id}")
-    public Employee getEmployee(@PathVariable Long id){
+    public Employee getEmployee(@PathVariable String id){
         return empDirectory.get(id);
     }
 
@@ -28,6 +29,10 @@ public class EmployeeController {
     public Employee addEmployee(@RequestBody Employee employee){
         empDirectory.put(employee.getId(),employee);
         return employee;
+    }
 
+    @DeleteMapping("{id}")
+    public Employee deleteEmployee(@PathVariable(value = "id") String id){
+         return empDirectory.remove(id);
     }
 }
