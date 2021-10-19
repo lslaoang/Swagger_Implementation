@@ -14,7 +14,7 @@ import java.util.concurrent.ConcurrentMap;
 //@RequestMapping("api")
 public class EmployeeController {
 
-    ConcurrentMap<String,Employee> empDirectory = new ConcurrentHashMap<>();
+    ConcurrentMap<Long,Employee> empDirectory = new ConcurrentHashMap<>();
 
     @GetMapping("/")
     public List<Employee> getAllEmployee(){
@@ -22,7 +22,7 @@ public class EmployeeController {
     }
 
     @GetMapping("/{id}")
-    public Employee getEmployee(@PathVariable String id){
+    public Employee getEmployee(@PathVariable Long id){
         return empDirectory.get(id);
     }
 
@@ -33,7 +33,7 @@ public class EmployeeController {
     }
 
     @PutMapping("/{id}")
-    public Employee updateEmployee(@RequestBody Employee employee, @PathVariable String id)
+    public Employee updateEmployee(@RequestBody Employee employee, @PathVariable Long id)
             throws ResourceNotFoundException {
         if(empDirectory.get(id)!=null){
             Employee emp = empDirectory.get(id);
@@ -48,7 +48,7 @@ public class EmployeeController {
     }
 
     @DeleteMapping("{id}")
-    public Employee deleteEmployee(@PathVariable(value = "id") String id){
+    public Employee deleteEmployee(@PathVariable(value = "id") Long id){
          return empDirectory.remove(id);
     }
 }
