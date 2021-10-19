@@ -11,7 +11,7 @@ import java.util.concurrent.ConcurrentMap;
 
 
 @RestController
-//@RequestMapping("api")
+@RequestMapping("api")
 public class EmployeeController {
 
     ConcurrentMap<Long,Employee> empDirectory = new ConcurrentHashMap<>();
