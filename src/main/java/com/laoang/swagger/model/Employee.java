@@ -10,23 +10,26 @@ public class Employee {
         return id;
     }
 
-    public void setId(Long id) {
+    public Employee setId(Long id) {
         this.id = id;
+        return this;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public Employee setName(String name) {
         this.name = name;
+        return this;
     }
 
     public String getDepartment() {
         return department;
     }
 
-    public void setDepartment(String department) {
+    public Employee setDepartment(String department) {
         this.department = department;
+        return this;
     }
 }
