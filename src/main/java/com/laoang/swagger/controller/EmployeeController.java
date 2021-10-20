@@ -14,6 +14,9 @@ import java.util.concurrent.ConcurrentMap;
 @RequestMapping("api")
 public class EmployeeController {
 
+    /*
+    *CocurrentMap to accommodate different Threads
+     */
     ConcurrentMap<Long,Employee> empDirectory = new ConcurrentHashMap<>();
 
     @GetMapping("/")
@@ -35,6 +38,8 @@ public class EmployeeController {
     @PutMapping("/{id}")
     public Employee updateEmployee(@RequestBody Employee employee, @PathVariable Long id)
             throws ResourceNotFoundException {
+
+        //Validation if ID is null
         if(empDirectory.get(id)!=null){
             Employee emp = empDirectory.get(id);
             emp.setId(employee.getId()).setName(employee.getName()).setDepartment(employee.getDepartment());
