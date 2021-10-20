@@ -42,7 +42,11 @@ public class EmployeeController {
         //Validation if ID is null
         if(empDirectory.get(id)!=null){
             Employee emp = empDirectory.get(id);
-            emp.setId(employee.getId()).setName(employee.getName()).setDepartment(employee.getDepartment());
+
+            emp.setId(employee.getId());
+            emp.setName(employee.getName());
+            emp.setDepartment(employee.getDepartment());
+
             empDirectory.put(id,emp);
             return empDirectory.get(id);
         }else{
